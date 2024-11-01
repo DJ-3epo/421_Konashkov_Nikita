@@ -44,7 +44,7 @@ namespace _421_Konashkov_Nikita.Pages
             }
 
            
-            using (var DataBase = new DataBaseEntities())
+            using (var DataBase = new Entities())
             {
                 var user = DataBase.User
                     .AsNoTracking() 

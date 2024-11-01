@@ -13,10 +13,10 @@ namespace _421_Konashkov_Nikita
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DataBaseEntities : DbContext
+    public partial class Entities : DbContext
     {
-        public DataBaseEntities()
-            : base("name=DataBaseEntities")
+        public Entities()
+            : base("name=Entities")
         {
         }
     
