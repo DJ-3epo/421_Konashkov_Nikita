@@ -1,0 +1,80 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Основные цвета -->
+    <Color x:Key="PrimaryColor1">#B5D5CA</Color>
+    <!-- RGB: 181, 213, 202 -->
+    <Color x:Key="PrimaryColor2">#E0A9AF</Color>
+    <!-- RGB: 224, 169, 175 -->
+
+    <!-- Дополнительные цвета для четных и нечетных строк таблиц -->
+    <Color x:Key="SecondaryColor1">#D1EEFD</Color>
+    <!-- RGB: 209, 238, 252 (четные строки) -->
+    <Color x:Key="SecondaryColor2">#FFCECE</Color>
+    <!-- RGB: 255, 225, 214 (нечетные строки) -->
+
+    <!-- Цвета для текста -->
+    <Color x:Key="TextLight">#FFFFFF</Color>
+    <!-- RGB: 255, 255, 255 (светлый текст для темного фона) -->
+    <Color x:Key="TextDark">#000000</Color>
+    <!-- RGB: 0, 0, 0 (темный текст для светлого фона) -->
+
+    <!-- Кисти для цветов -->
+    <SolidColorBrush x:Key="PrimaryBrush1" Color="{StaticResource PrimaryColor1}"/>
+    <SolidColorBrush x:Key="PrimaryBrush2" Color="{StaticResource PrimaryColor2}"/>
+    <SolidColorBrush x:Key="SecondaryBrushEven" Color="{StaticResource SecondaryColor1}"/>
+    <!-- Четные строки -->
+    <SolidColorBrush x:Key="SecondaryBrushOdd" Color="{StaticResource SecondaryColor2}"/>
+    <!-- Нечетные строки -->
+    <SolidColorBrush x:Key="TextLightBrush" Color="{StaticResource TextLight}"/>
+    <SolidColorBrush x:Key="TextDarkBrush" Color="{StaticResource TextDark}"/>
+
+    <!-- Стиль для заголовков с логотипом -->
+    <Style x:Key="HeaderStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="{StaticResource TextDarkBrush}"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <!-- Добавьте привязку логотипа здесь, если требуется -->
+    </Style>
+
+    <!-- Стиль для текстовых элементов (надписей) -->
+    <Style x:Key="LabelStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="Foreground" Value="{StaticResource TextDarkBrush}"/>
+    </Style>
+
+    <Style x:Key="BoldLabelStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="{StaticResource TextDarkBrush}"/>
+    </Style>
+
+    <!-- Стиль для таблиц (четные и нечетные строки) -->
+    <Style x:Key="TableRowEvenStyle" TargetType="DataGridRow">
+        <Setter Property="Background" Value="{StaticResource SecondaryBrushEven}"/>
+    </Style>
+    <Style x:Key="TableRowOddStyle" TargetType="DataGridRow">
+        <Setter Property="Background" Value="{StaticResource SecondaryBrushOdd}"/>
+    </Style>
+
+    <!-- Унифицированные стили для выравнивания -->
+    <Style TargetType="TextBlock" x:Key="CenteredText">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="LeftAlignedText">
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <!-- Пример стиля для использования крупного текста (для заголовков) -->
+    <Style x:Key="LargeTextStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="{StaticResource TextDarkBrush}"/>
+    </Style>
+
+</ResourceDictionary>
