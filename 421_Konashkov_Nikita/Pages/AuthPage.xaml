@@ -45,7 +45,7 @@
         ToolTip="Нажмите, чтобы войти" Background="#E0A9AF" Foreground="Black" FontWeight="Bold" 
         Click="ButtonLogin_Click"/>
         <Button x:Name="ButtonRegister" Content="Регистрация" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Width="100" Margin="5" ToolTip="Нажмите, чтобы зарегистрироваться"
-                Background="#E0A9AF" Foreground="Black" FontWeight="Bold"/>
+                Background="#E0A9AF" Foreground="Black" FontWeight="Bold"  Click="ButtonRegister_Click"/>
 
     </Grid>
 </Page>

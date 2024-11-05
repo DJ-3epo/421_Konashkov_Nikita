@@ -13,11 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace _421_Konashkov_Nikita.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для AuthPage.xaml
-    /// </summary>
+    
     public partial class AuthPage : Page
     {
         public AuthPage()
@@ -33,7 +32,10 @@ namespace _421_Konashkov_Nikita.Pages
         {
             txtHintPassword.Visibility = string.IsNullOrEmpty(PasswordBoxPassword.Password) ? Visibility.Visible : Visibility.Hidden;
         }
-
+        private void ButtonRegister_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new RegPage());
+        }
         private void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
             
