@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.Security.Cryptography;
 
 namespace _421_Konashkov_Nikita.Pages
 {
@@ -27,7 +27,13 @@ namespace _421_Konashkov_Nikita.Pages
         {
             txtHintLogin.Visibility = string.IsNullOrEmpty(TextBoxLogin.Text) ? Visibility.Visible : Visibility.Hidden;
         }
-
+        public static string GetHash(string password)
+        {
+            using (var hash = SHA1.Create())
+            {
+                return string.Concat(hash.ComputeHash(Encoding.UTF8.GetBytes(password)).Select(x => x.ToString("X2")));
+            }
+        }
         private void PasswordBoxPassword_Changed(object sender, RoutedEventArgs e)
         {
             txtHintPassword.Visibility = string.IsNullOrEmpty(PasswordBoxPassword.Password) ? Visibility.Visible : Visibility.Hidden;
@@ -38,30 +44,42 @@ namespace _421_Konashkov_Nikita.Pages
         }
         private void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
-            
             if (string.IsNullOrEmpty(TextBoxLogin.Text) || string.IsNullOrEmpty(PasswordBoxPassword.Password))
             {
                 MessageBox.Show("Введите логин и пароль!");
                 return;
             }
 
-           
             using (var DataBase = new Entities())
             {
                 var user = DataBase.User
-                    .AsNoTracking() 
-                    .FirstOrDefault(u => u.Login == TextBoxLogin.Text && u.Password == PasswordBoxPassword.Password);
+                    .AsNoTracking()
+                    .FirstOrDefault(u => u.Login == TextBoxLogin.Text);
 
-                
                 if (user == null)
                 {
                     MessageBox.Show("Пользователь с такими данными не найден!");
                     return;
                 }
 
-             
+                string hashedPassword = GetHash(PasswordBoxPassword.Password);
+
+                // Проверка, используется ли хешированный пароль
+                if (user.Password == PasswordBoxPassword.Password)
+                {
+                    // Пароль сохранён в открытом виде - хешируем его и обновляем запись
+                    user.Password = hashedPassword;
+                    DataBase.SaveChanges();
+                }
+                else if (user.Password != hashedPassword)
+                {
+                    // Неправильный пароль
+                    MessageBox.Show("Неправильный пароль!");
+                    return;
+                }
+
+                // Вход успешен
                 MessageBox.Show("Вход выполнен успешно!");
-                
                 switch (user.Role)
                 {
                     case "администратор":
@@ -70,11 +88,11 @@ namespace _421_Konashkov_Nikita.Pages
                     case "пользователь":
                         NavigationService?.Navigate(new UserMenu());
                         break;
-
                 }
-                
             }
         }
+
+
 
     }
 }

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Security.Cryptography;
 
 namespace _421_Konashkov_Nikita.Pages
 {
@@ -24,6 +25,14 @@ namespace _421_Konashkov_Nikita.Pages
         {
             InitializeComponent();
         }
+        public static string GetHash(string password)
+        {
+            using (var hash = SHA1.Create())
+            {
+                return string.Concat(hash.ComputeHash(Encoding.UTF8.GetBytes(password)).Select(x => x.ToString("X2")));
+            }
+        }
+
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
             TextBoxLogin.Clear();
@@ -45,6 +54,7 @@ namespace _421_Konashkov_Nikita.Pages
                 MessageBox.Show("Все поля должны быть заполнены.");
                 return;
             }
+
 
             // 7.2 Проверка уникальности логина
             using (Entities db = new Entities())
@@ -79,7 +89,7 @@ namespace _421_Konashkov_Nikita.Pages
                 {
                     FIO = TextBoxFIO.Text,
                     Login = TextBoxLogin.Text,
-                    Password = PasswordBox.Password,
+                    Password = GetHash(PasswordBox.Password),
                     Role = (CmbRole.SelectedItem as ComboBoxItem)?.Content.ToString()
                 };
 
