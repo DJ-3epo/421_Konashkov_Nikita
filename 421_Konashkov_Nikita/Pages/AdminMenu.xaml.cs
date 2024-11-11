@@ -23,6 +23,10 @@ namespace _421_Konashkov_Nikita.Pages
         public AdminMenu()
         {
             InitializeComponent();
+            DataGridUser.ItemsSource = Entities.GetContext().User.ToList();
         }
+
+        private void ButtonAdd_Click(object sender, RoutedEventArgs e) { }
+        private void ButtonDel_Click(object sender, RoutedEventArgs e) { }
     }
 }

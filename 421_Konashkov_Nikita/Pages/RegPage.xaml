@@ -8,7 +8,7 @@
         <local:EmptyTextToVisibilityConverter x:Key="EmptyTextToVisibilityConverter"/>
     </Page.Resources>
 
-    <Grid Margin="20" Background="#B5D5CA">
+    <Grid Margin="20" Background="{StaticResource PrimaryBrush1}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="*"/>
@@ -56,9 +56,9 @@
 
         <!-- Роль -->
         <Label Content="Выберите роль" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="5"/>
-        <ComboBox x:Name="CmbRole" Grid.Row="3" ToolTip="Выберите роль" Margin="5,8,5,2" Grid.Column="1">
-            <ComboBoxItem Content="Администратор" IsSelected="True"/>
-            <ComboBoxItem Content="Пользователь"/>
+        <ComboBox x:Name="CmbRole" Grid.Row="3" ToolTip="Выберите роль" Margin="5,8,5,2" Grid.Column="1"> 
+            <ComboBoxItem Content="Пользователь" IsSelected="True"/>
+            <ComboBoxItem Content="Администратор" />
         </ComboBox>
 
         <!-- ФИО -->
@@ -73,8 +73,8 @@
 
         <!-- Кнопки -->
         <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
-            <Button x:Name="ButtonCancel" Content="Отмена" Width="100" Margin="5" Click="ButtonCancel_Click" Background="#E0A9AF"/>
-            <Button x:Name="ButtonRegister" Content="Регистрация" Width="100" Margin="5" Click="ButtonRegister_Click" Background="#E0A9AF"/>
+            <Button x:Name="ButtonCancel" Content="Отмена" Width="100" Margin="5" Click="ButtonCancel_Click" Background="{StaticResource PrimaryBrush2}"/>
+            <Button x:Name="ButtonRegister" Content="Регистрация" Width="100" Margin="5" Click="ButtonRegister_Click" Background="{StaticResource PrimaryBrush2}"/>
         </StackPanel>
     </Grid>
 </Page>

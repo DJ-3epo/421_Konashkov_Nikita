@@ -19,11 +19,11 @@
 
         <!-- Кнопка Назад в левом углу верхней строки -->
         <Button x:Name="BackButton" Content="Назад" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" 
-                Margin="10,0,0,0" Width="80" Click="BackButton_Click"/>
+                Margin="10,0,0,0" Width="80" Click="BackButton_Click" Background="{StaticResource PrimaryBrush2}"/>
 
         <!-- Кнопка Выход в правом углу верхней строки -->
         <Button Content="Выход" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" 
-                Margin="0,0,10,0" Width="80" Click="ExitButton_Click"/>
+                Margin="0,0,10,0" Width="80" Click="ExitButton_Click" Background="{StaticResource PrimaryBrush2}"/>
 
         <!-- Средняя строка с Frame для загрузки страниц -->
         <Frame x:Name="MainFrame"  Source="Pages/AuthPage.xaml" Grid.Row="1" Navigated="MainFrame_OnNavigated"/>

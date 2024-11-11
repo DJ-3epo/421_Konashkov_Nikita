@@ -37,7 +37,7 @@
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <!-- Добавьте привязку логотипа здесь, если требуется -->
     </Style>
-
+    
     <!-- Стиль для текстовых элементов (надписей) -->
     <Style x:Key="LabelStyle" TargetType="TextBlock">
         <Setter Property="FontSize" Value="14"/>
