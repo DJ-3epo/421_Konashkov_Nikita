@@ -32,8 +32,8 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button Grid.Row="1" Name="ButtonAdd" Content="Добавить" HorizontalAlignment="Left" Click="ButtonAdd_Click" Background="{StaticResource PrimaryBrush2}"/>
-        <Button Grid.Row="1" Name="ButtonDel" Content="Удалить" HorizontalAlignment="Right" Click="ButtonDel_Click"  Background="{StaticResource PrimaryBrush2}"/>
+        <Button Grid.Row="1" Name="ButtonAdd" Content="Добавить" ToolTip="Нажмите, чтобы добавить запись" HorizontalAlignment="Left" Click="ButtonAdd_Click" Background="{StaticResource PrimaryBrush2}"/>
+        <Button Grid.Row="1" Name="ButtonDel" Content="Удалить" ToolTip="Нажмите, чтобы удалить запись" HorizontalAlignment="Right" Click="ButtonDel_Click"  Background="{StaticResource PrimaryBrush2}"/>
     </Grid>
 
 </Page>

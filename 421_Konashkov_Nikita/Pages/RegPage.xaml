@@ -28,7 +28,7 @@
         <Label Content="Введите логин" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="5"/>
         <Grid Grid.Row="0" Grid.Column="1" Margin="5">
             <TextBox x:Name="TextBoxLogin" ToolTip="Введите логин" />
-            <TextBlock Text="Логин" Foreground="Gray" IsHitTestVisible="False" 
+            <TextBlock  Foreground="Gray" IsHitTestVisible="False" 
                        VerticalAlignment="Center" HorizontalAlignment="Left"
                        Margin="5,0,0,0"
                        Visibility="{Binding Text, ElementName=TextBoxLogin, Converter={StaticResource EmptyTextToVisibilityConverter}}"/>
@@ -38,7 +38,7 @@
         <Label Content="Введите пароль" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="5"/>
         <Grid Grid.Row="1" Grid.Column="1" Margin="5">
             <PasswordBox x:Name="PasswordBox" ToolTip="Введите пароль" />
-            <TextBlock Text="Пароль" Foreground="Gray" IsHitTestVisible="False" 
+            <TextBlock  Foreground="Gray" IsHitTestVisible="False" 
                        VerticalAlignment="Center" HorizontalAlignment="Left"
                        Margin="5,0,0,0"
                        Visibility="{Binding Password, ElementName=PasswordBox, Converter={StaticResource EmptyTextToVisibilityConverter}}"/>
@@ -48,7 +48,7 @@
         <Label Content="Подтвердите пароль" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="5"/>
         <Grid Grid.Row="2" Grid.Column="1" Margin="5">
             <PasswordBox x:Name="PasswordBoxConfirm" ToolTip="Введите пароль ещё раз" />
-            <TextBlock Text="Подтверждение пароля" Foreground="Gray" IsHitTestVisible="False" 
+            <TextBlock  Foreground="Gray" IsHitTestVisible="False" 
                        VerticalAlignment="Center" HorizontalAlignment="Left"
                        Margin="5,0,0,0"
                        Visibility="{Binding Password, ElementName=PasswordBoxConfirm, Converter={StaticResource EmptyTextToVisibilityConverter}}"/>
@@ -65,7 +65,7 @@
         <Label Content="Введите ФИО" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Margin="5"/>
         <Grid Grid.Row="4" Grid.Column="1" Margin="5">
             <TextBox x:Name="TextBoxFIO" ToolTip="Введите ваше полное имя" />
-            <TextBlock Text="ФИО" Foreground="Gray" IsHitTestVisible="False" 
+            <TextBlock  Foreground="Gray" IsHitTestVisible="False" 
                        VerticalAlignment="Center" HorizontalAlignment="Left"
                        Margin="5,0,0,0"
                        Visibility="{Binding Text, ElementName=TextBoxFIO, Converter={StaticResource EmptyTextToVisibilityConverter}}"/>
