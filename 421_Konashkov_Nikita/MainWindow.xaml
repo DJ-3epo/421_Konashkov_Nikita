@@ -26,7 +26,7 @@
                 Margin="0,0,10,0" Width="80" Click="ExitButton_Click" Background="{StaticResource PrimaryBrush2}"/>
 
         <!-- Средняя строка с Frame для загрузки страниц -->
-        <Frame x:Name="MainFrame"  Source="Pages/AuthPage.xaml" Grid.Row="1" Navigated="MainFrame_OnNavigated"/>
+        <Frame x:Name="MainFrame"  Source="Pages/AuthPage.xaml" Grid.Row="1" Navigated="MainFrame_OnNavigated" NavigationUIVisibility="Hidden"/>
 
         <!-- Нижняя строка с текущей датой и временем в правом углу -->
         <TextBlock x:Name="DateTimeText" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" 
