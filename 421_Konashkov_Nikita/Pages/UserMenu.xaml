@@ -9,6 +9,22 @@
       Title="Меню пользователя">
 
     <Grid>
-        
+        <DataGrid Grid.Row="0" Name="DataGridUser" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Логин" Binding="{Binding Login}" Width="50"/>
+                <DataGridTextColumn Header="Пароль" Binding="{Binding Password}" Width="70"/>
+                <DataGridTextColumn Header="Роль" Binding="{Binding Role}" Width="80"/>
+                <DataGridTextColumn Header="Ф.И.О." Binding="{Binding FIO}" Width="100"/>
+                <DataGridTextColumn Header="Фото" Binding="{Binding Photo}" Width="100"/>
+
+                <DataGridTemplateColumn Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                           
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

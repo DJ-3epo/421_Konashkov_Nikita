@@ -29,48 +29,44 @@ namespace _421_Konashkov_Nikita.Pages
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            Entities db = new Entities();
-            // Создаем нового пользователя
-            var newUser = new User
-            {
-                Login = "NewUser", // Здесь можно добавить логику ввода
-                Password = "Password123",
-                Role = "User",
-                FIO = "New User",
-                Photo = "photo_path" // Можно оставить пустым или задать значение по умолчанию
-            };
-
-            // Добавление пользователя в контекст и сохранение изменений
-            db.User.Add(newUser);
-            db.SaveChanges(); // Сохраняем изменения в базу данных
-
-            // Обновляем данные в DataGrid
-            DataGridUser.ItemsSource = db.User.ToList();
+            // Открываем страницу добавления пользователя
+            NavigationService.Navigate(new Pages.AddUserPage(null));
         }
 
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (Visibility == Visibility.Visible)
+            {
+                Entities.GetContext().ChangeTracker.Entries().ToList().ForEach(x => x.Reload());
+                DataGridUser.ItemsSource = Entities.GetContext().User.ToList();
+            }
+        }
 
         private void ButtonDel_Click(object sender, RoutedEventArgs e)
         {
-            // Используем существующий контекст, а не создаем новый
-            var db = Entities.GetContext(); // Получаем существующий контекст из вашего класса
+            var usersForRemoving = DataGridUser.SelectedItems.Cast<User>().ToList();
 
-            // Получаем выбранного пользователя
-            var selectedUser = DataGridUser.SelectedItem as User;
-
-            if (selectedUser != null)
+            if (MessageBox.Show($"Вы точно хотите удалить записи в количестве {usersForRemoving.Count()} элементов?", "Внимание",
+                            MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes) ;
+            try
             {
-                // Удаляем пользователя из контекста
-                db.User.Remove(selectedUser);
-                db.SaveChanges(); // Сохраняем изменения в базе данных
+                Entities.GetContext().User.RemoveRange(usersForRemoving);
+                Entities.GetContext().SaveChanges();
+                MessageBox.Show("Данные успешно удалены!");
 
-                // Обновляем данные в DataGrid
-                DataGridUser.ItemsSource = db.User.ToList();
+                DataGridUser.ItemsSource = Entities.GetContext().User.ToList();
             }
-            else
+            catch (Exception ex)
             {
-                // Если пользователь не выбран, показываем сообщение
-                MessageBox.Show("Пожалуйста, выберите пользователя для удаления.");
+                MessageBox.Show(ex.Message.ToString());
             }
+
+
+        }
+
+        private void ButtonEdit_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Pages.AddUserPage((sender as Button).DataContext as User));
         }
     }
 }

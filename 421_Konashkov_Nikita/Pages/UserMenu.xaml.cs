@@ -23,6 +23,7 @@ namespace _421_Konashkov_Nikita.Pages
         public UserMenu()
         {
             InitializeComponent();
+            DataGridUser.ItemsSource = Entities.GetContext().User.ToList();
         }
     }
 }

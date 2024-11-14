@@ -82,10 +82,10 @@ namespace _421_Konashkov_Nikita.Pages
                 MessageBox.Show("Вход выполнен успешно!");
                 switch (user.Role)
                 {
-                    case "администратор":
+                    case "Администратор":
                         NavigationService?.Navigate(new AdminMenu());
                         break;
-                    case "пользователь":
+                    case "Пользователь":
                         NavigationService?.Navigate(new UserMenu());
                         break;
                 }

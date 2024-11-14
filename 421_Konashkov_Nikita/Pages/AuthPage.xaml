@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Авторизация">
 
-    <Grid Margin="20" Background="#B5D5CA">
+    <Grid Margin="20" Background="{StaticResource PrimaryBrush1}">
         
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"/>
@@ -42,10 +42,10 @@
         </Grid>
 
         <Button x:Name="ButtonLogin" Content="Вход" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Width="100" Margin="5" 
-        ToolTip="Нажмите, чтобы войти" Background="#E0A9AF" Foreground="Black" FontWeight="Bold" 
+        ToolTip="Нажмите, чтобы войти" Background="{StaticResource PrimaryBrush2}" Foreground="Black" FontWeight="Bold" 
         Click="ButtonLogin_Click"/>
         <Button x:Name="ButtonRegister" Content="Регистрация" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Width="100" Margin="5" ToolTip="Нажмите, чтобы зарегистрироваться"
-                Background="#E0A9AF" Foreground="Black" FontWeight="Bold"  Click="ButtonRegister_Click"/>
+                Background="{StaticResource PrimaryBrush2}" Foreground="Black" FontWeight="Bold"  Click="ButtonRegister_Click"/>
 
     </Grid>
 </Page>
