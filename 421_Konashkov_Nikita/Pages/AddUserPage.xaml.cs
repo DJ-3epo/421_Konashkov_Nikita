@@ -7,7 +7,7 @@ namespace _421_Konashkov_Nikita.Pages
 {
     public partial class AddUserPage : Page
     {
-        private User _currentUser;
+        private User _currentUser = new User();
 
         public AddUserPage(User selectedUser)
         {
@@ -29,6 +29,9 @@ namespace _421_Konashkov_Nikita.Pages
                 errors.AppendLine("Укажите ФИО!");
             if (string.IsNullOrWhiteSpace(_currentUser.Role) || cmbRole.SelectedItem == null)
                 errors.AppendLine("Выберите роль!");
+
+            else
+                _currentUser.Role = cmbRole.Text;
 
             if (errors.Length > 0)
             {
