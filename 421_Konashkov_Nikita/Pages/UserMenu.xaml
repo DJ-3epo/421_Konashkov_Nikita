@@ -6,25 +6,73 @@
       xmlns:local="clr-namespace:_421_Konashkov_Nikita.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Меню пользователя">
+      Title="Меню пользователя" Background="{StaticResource PrimaryBrush1}">
 
-    <Grid>
-        <DataGrid Grid.Row="0" Name="DataGridUser" AutoGenerateColumns="False" IsReadOnly="True">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Логин" Binding="{Binding Login}" Width="50"/>
-                <DataGridTextColumn Header="Пароль" Binding="{Binding Password}" Width="70"/>
-                <DataGridTextColumn Header="Роль" Binding="{Binding Role}" Width="80"/>
-                <DataGridTextColumn Header="Ф.И.О." Binding="{Binding FIO}" Width="100"/>
-                <DataGridTextColumn Header="Фото" Binding="{Binding Photo}" Width="100"/>
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-                <DataGridTemplateColumn Width="*">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                           
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
+        <!-- Панель для поиска, фильтрации и сортировки -->
+        <WrapPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <!-- Поиск по Ф.И.О -->
+            <TextBox Name="TextBoxSearch" Width="200" Margin="5" TextChanged="TextBoxSearch_TextChanged">
+                <TextBox.Style>
+                    <Style TargetType="TextBox">
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="">
+                                <Setter Property="ToolTip" Value="Поиск по Ф.И.О." />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+
+            <!-- Сортировка -->
+            <ComboBox Name="CmbSorting" Width="150" Margin="5" SelectionChanged="ComboBoxSorting_SelectionChanged">
+                <ComboBoxItem Content="По возрастанию"/>
+                <ComboBoxItem Content="По убыванию"/>
+            </ComboBox>
+
+            <!-- Фильтр по ролям -->
+            <CheckBox Name="CheckDriver" Content="Пользователь" Margin="5" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+
+            <!-- Кнопка очистки фильтров -->
+            <Button Name="ClearFilterButton" Content="Очистить фильтр" Margin="5" Click="ClearFilterButton_Click" Background="{StaticResource PrimaryBrush2}"/>
+        </WrapPanel>
+
+        <!-- Список пользователей -->
+        <ListView Name="ListUser" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center" Background="{StaticResource PrimaryBrush1}">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"></WrapPanel>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="450"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Image Width="450" Grid.Row="1" Stretch="UniformToFill" HorizontalAlignment="Center">
+                            <Image.Source>
+                                <Binding Path="Photo">
+                                    <Binding.TargetNullValue>
+                                        <ImageSource>C:\Users\user\source\repos\421_Konashkov_Nikita\421_Konashkov_Nikita\Resources\DefaultPhoto.png</ImageSource>
+                                    </Binding.TargetNullValue>
+                                </Binding>
+                            </Image.Source>
+                        </Image>
+                        <TextBlock VerticalAlignment="Center" TextAlignment="Center" Width="450" Grid.Row="0" TextWrapping="Wrap" Text="{Binding FIO}" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold"/>
+                        <TextBlock VerticalAlignment="Center" TextAlignment="Left" Width="450" Grid.Row="2" HorizontalAlignment="Center" FontSize="18" Text="{Binding Role}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
+
 </Page>
